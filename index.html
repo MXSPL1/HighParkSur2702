@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Park Sur 2702</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-top: #fafaf9;
+      --bg-bottom: #f3eee8;
+      --white: #f5f2ee;
+      --gold: #c5a059;
+      --gold-soft: #dac08f;
+      --brown: #2a2522;
+      --brown-soft: rgba(42, 37, 34, 0.8);
+      --line: rgba(197, 160, 89, 0.34);
+      --overlay: rgba(20, 14, 9, 0.48);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(197, 160, 89, 0.07), transparent 35%),
+        radial-gradient(circle at 86% 85%, rgba(42, 37, 34, 0.07), transparent 40%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(22, 16, 11, 0.25) 0%, var(--overlay) 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -8% -35%;
+      height: 60%;
+      z-index: 1;
+      background: radial-gradient(ellipse at center, rgba(20, 14, 9, 0.64) 0%, rgba(20, 14, 9, 0) 72%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem 3.2rem;
+      max-width: var(--max-width);
+      width: 100%;
+      will-change: transform, opacity;
+      animation: heroEnter 1.2s ease both;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      font-size: clamp(2.2rem, 7.2vw, 5.4rem);
+      text-transform: uppercase;
+      text-wrap: balance;
+      text-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-rule {
+      width: min(640px, 75vw);
+      height: 1px;
+      margin: 1.4rem auto 1.5rem;
+      background: linear-gradient(90deg, transparent, rgba(245, 242, 238, 0.9), transparent);
+    }
+
+    .hero nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem 1.45rem;
+    }
+
+    .hero nav a {
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      font-weight: 300;
+      transition: color 0.32s ease, transform 0.32s ease;
+    }
+
+    .hero nav a:hover {
+      color: #efdfbe;
+      transform: translateY(-2px);
+    }
+
+    .scroll-cue {
+      margin-top: 2.7rem;
+      color: rgba(245, 242, 238, 0.84);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.63rem;
+      animation: scrollHint 2.1s ease-in-out infinite;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 26px;
+      margin: 0.6rem auto 0;
+      background: linear-gradient(180deg, rgba(245, 242, 238, 0.9) 0%, rgba(245, 242, 238, 0) 100%);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 1.35rem 8rem;
+    }
+
+    .description {
+      max-width: 840px;
+      margin: 0 auto 5.1rem;
+      padding: 1rem 0 1.2rem;
+      text-align: center;
+    }
+
+    .description h2 {
+      margin: 0 0 2.2rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.9rem, 4vw, 2.85rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .description p {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(1.02rem, 2.2vw, 1.32rem);
+      line-height: 2;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      max-width: 760px;
+      margin-inline: auto;
+      color: var(--brown-soft);
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto 3.8rem;
+      padding: 4rem 1.3rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid rgba(79, 58, 36, 0.16);
+      text-align: center;
+      min-height: 260px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.2) 100%);
+      backdrop-filter: blur(2px);
+      scroll-margin-top: 36px;
+    }
+
+    .section h2 {
+      margin: 0 0 1rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .section p {
+      margin: 0;
+      font-size: 0.98rem;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--brown-soft);
+    }
+
+    .gallery-intro {
+      margin-bottom: 1.4rem;
+    }
+
+    .gallery-wrap {
+      position: relative;
+      margin-top: 1.8rem;
+    }
+
+    .gallery-wrap::before,
+    .gallery-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 42px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .gallery-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(250, 250, 249, 0.9) 0%, rgba(250, 250, 249, 0) 100%);
+    }
+
+    .gallery-wrap::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(250, 250, 249, 0.9) 0%, rgba(250, 250, 249, 0) 100%);
+    }
+
+    .gallery-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(250px, 33vw);
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0.4rem 0.3rem 0.9rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(197, 160, 89, 0.45) transparent;
+    }
+
+    .gallery-track::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-track::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .gallery-track::-webkit-scrollbar-thumb {
+      background: rgba(197, 160, 89, 0.45);
+      border-radius: 999px;
+    }
+
+    .gallery-card {
+      margin: 0;
+      scroll-snap-align: start;
+      border: 1px solid rgba(197, 160, 89, 0.28);
+      background: rgba(255, 255, 255, 0.62);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: saturate(0.95) contrast(1.02);
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .video-card {
+      position: relative;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .video-card.is-playing {
+      transform: scale(1.04);
+      border-color: rgba(197, 160, 89, 0.5);
+      box-shadow: 0 18px 40px rgba(42, 37, 34, 0.14);
+      z-index: 3;
+    }
+
+    .video-media {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #120f0d;
+    }
+
+    .video-caption {
+      padding: 0.85rem 0.95rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.56) 100%);
+    }
+
+    .map-card {
+      margin-top: 1.6rem;
+      padding: 0.5rem;
+      border: 1px solid rgba(197, 160, 89, 0.28);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .map-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      display: block;
+      filter: saturate(0.92) contrast(1.01);
+    }
+
+    .map-address {
+      margin: 1rem auto 0;
+      max-width: 780px;
+      font-size: 0.96rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--brown-soft);
+    }
+
+    .contact-panel {
+      max-width: 760px;
+      margin: 1.8rem auto 0;
+      padding: 1.4rem 1.2rem;
+      border: 1px solid rgba(197, 160, 89, 0.28);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+    }
+
+    .contact-label {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-link,
+    .contact-text {
+      font-size: 0.98rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--brown-soft);
+      text-decoration: none;
+      transition: color 0.28s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--brown);
+    }
+
+    .whatsapp-link {
+      width: fit-content;
+      margin: 0.4rem auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--brown);
+      text-decoration: none;
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    }
+
+    .whatsapp-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(197, 160, 89, 0.5);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .whatsapp-icon {
+      width: 1.35rem;
+      height: 1.35rem;
+      display: block;
+      flex: none;
+    }
+
+    .whatsapp-text {
+      font-size: 0.92rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: transform 0.9s cubic-bezier(0.2, 0.68, 0.2, 1), opacity 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes heroEnter {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollHint {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding-top: 4.6rem;
+      }
+
+      .section {
+        padding: 3.2rem 1rem;
+      }
+
+      .hero nav ul {
+        gap: 0.65rem 0.95rem;
+      }
+
+      .hero nav a {
+        font-size: 0.66rem;
+        letter-spacing: 0.13em;
+      }
+
+      .gallery-track {
+        grid-auto-columns: minmax(220px, 78vw);
+      }
+
+      .contact-row {
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-content,
+      .reveal,
+      .reveal.visible,
+      .scroll-cue {
+        animation: none;
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <video autoplay muted loop playsinline>
+      <source src="HPTowers.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-content">
+      <h1>High Park Sur 2702</h1>
+      <div class="hero-rule"></div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#images">Images</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#map">Map</a></li>
+          <li><a href="#calendar">Calendar and Booking</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="scroll-cue">Scroll</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="description reveal">
+      <h2>A Sanctuary of Modern Elegance</h2>
+      <p>
+        Experience the pinnacle of luxury living at High Park Sur 2702. Every detail has been
+        meticulously curated to offer an atmosphere of refined tranquility and sophisticated comfort.
+        Immerse yourself in breathtaking views, bespoke amenities, and a space designed to elevate your
+        everyday.
+      </p>
+    </section>
+
+    <section class="section reveal" id="images">
+      <h2>Images</h2>
+      <p class="gallery-intro">Scroll right to explore the apartment through alternating photos and video.</p>
+      <div class="gallery-wrap" aria-label="Apartment image gallery">
+        <div class="gallery-track">
+          <figure class="gallery-card"><img src="livingr.jpeg" alt="Living room view" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="desk.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Desk</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="dinner.jpeg" alt="Dining area" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="Kitchen.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Kitchen</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="mbed2.jpeg" alt="Master bedroom view two" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="bedroom2.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Bedroom</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="mbth.jpeg" alt="Master bathroom view" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="kitchen.jpeg" alt="Kitchen view" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="closet.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Closet</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="livingr.jpeg" alt="Living room view" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="mbed1.jpeg" alt="Master bedroom view one" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="bed.jpeg" alt="Bedroom view" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="mbth.jpeg" alt="Master bathroom view" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="bth.jpeg" alt="Bathroom view" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="amenities">
+      <h2>Amenities</h2>
+      <p class="gallery-intro">Scroll right to explore the building amenities through videos and stills.</p>
+      <div class="gallery-wrap" aria-label="Apartment amenities videos">
+        <div class="gallery-track">
+          <figure class="gallery-card"><img src="pool.jpeg" alt="Pool view one" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="pool.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Pool</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="garden.jpeg" alt="Garden area" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="lounge.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Lounge</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="playroom.jpeg" alt="Playroom view one" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="lobby.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Lobby</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="gym.jpeg" alt="Gym still view" loading="lazy" /></figure>
+          <figure class="gallery-card video-card">
+            <video class="video-media" controls preload="metadata" playsinline controlslist="nodownload">
+              <source src="Gym.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="video-caption">Gym</figcaption>
+          </figure>
+          <figure class="gallery-card"><img src="playroom2.jpeg" alt="Playroom view two" loading="lazy" /></figure>
+          <figure class="gallery-card"><img src="pool2.jpeg" alt="Pool view two" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="map">
+      <h2>Map</h2>
+      <p>Find us in Coyoacan, Mexico City.</p>
+      <div class="map-card">
+        <iframe
+          class="map-frame"
+          title="High Park Sur 2702 Location"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Anillo%20Perif%C3%A9rico%20Boulevard%20Adolfo%20Ruiz%20Cortines%205550%2C%20Pedregal%20de%20Carrasco%2C%20Coyoac%C3%A1n%2C%2004700%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX%2C%20Mexico&output=embed">
+        </iframe>
+      </div>
+      <p class="map-address">
+        Anillo Periferico Boulevard Adolfo Ruiz Cortines 5550, Pedregal de Carrasco, Coyoacan, 04700
+        Ciudad de Mexico, CDMX, Mexico.
+      </p>
+    </section>
+
+    <section class="section reveal" id="calendar">
+      <h2>Calendar and Booking</h2>
+      <p>Space reserved for availability calendar and booking information.</p>
+    </section>
+
+    <section class="section reveal" id="contact">
+      <h2>Contact Us</h2>
+      <p>For availability, booking questions, or private inquiries, contact us directly.</p>
+      <div class="contact-panel">
+        <div class="contact-grid">
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <a class="contact-link" href="mailto:sergiopavonlule@gmail.com">sergiopavonlule@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Phone US</span>
+            <a class="contact-link" href="tel:+19542042607">+1 954 204 2607</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Phone Mexico</span>
+            <a class="contact-link" href="tel:+5554054147">+55 5405 4147</a>
+          </div>
+        </div>
+        <a
+          class="whatsapp-link"
+          href="https://wa.me/19542042607?text=Hello%2C%20I%20am%20interested%20in%20High%20Park%20Sur%202702."
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Message on WhatsApp">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="12" fill="#25D366"></circle>
+            <path fill="#ffffff" d="M17.7 6.4C16.2 5 14.2 4.2 12 4.2c-4.3 0-7.8 3.5-7.8 7.8 0 1.4.4 2.8 1.1 4L4.2 20l4.1-1.1c1.2.7 2.4 1 3.7 1 4.3 0 7.8-3.5 7.8-7.8 0-2.1-.8-4.1-2.2-5.7Zm-5.7 12.2c-1.1 0-2.2-.3-3.1-.9l-.2-.1-2.4.6.7-2.3-.1-.2c-.7-1-1-2.1-1-3.4 0-3.4 2.7-6.1 6.1-6.1 1.6 0 3.2.6 4.3 1.8 1.2 1.1 1.8 2.7 1.8 4.3 0 3.3-2.7 6-6.1 6Zm3.4-4.5c-.2-.1-1.1-.5-1.3-.5-.2-.1-.3-.1-.5.1-.1.2-.5.5-.6.6-.1.1-.2.1-.4 0-.2-.1-.8-.3-1.5-.9-.6-.5-1-1.1-1.1-1.3-.1-.2 0-.3.1-.4l.3-.3.2-.3c.1-.1.1-.2.2-.4.1-.2 0-.3 0-.4 0-.1-.5-1.2-.7-1.6-.2-.4-.3-.3-.5-.3h-.4c-.1 0-.3.1-.5.3-.2.2-.7.7-.7 1.6 0 1 .7 1.9.8 2 .1.1 1.4 2.2 3.4 3 .5.2.9.4 1.2.5.5.2.9.2 1.2.1.4-.1 1.1-.5 1.3-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3Z"></path>
+          </svg>
+          <span class="whatsapp-text">Message on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const heroContent = document.querySelector(".hero-content");
+    const revealItems = document.querySelectorAll(".reveal");
+    const amenityVideos = document.querySelectorAll(".video-card video");
+
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const depth = Math.min(y, 420);
+      heroContent.style.transform = `translateY(${depth * 0.18}px)`;
+      heroContent.style.opacity = `${Math.max(1 - depth / 500, 0.18)}`;
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    amenityVideos.forEach((video) => {
+      const card = video.closest(".video-card");
+
+      video.addEventListener("play", () => {
+        amenityVideos.forEach((otherVideo) => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+            otherVideo.closest(".video-card")?.classList.remove("is-playing");
+          }
+        });
+
+        card?.classList.add("is-playing");
+      });
+
+      video.addEventListener("pause", () => {
+        if (!video.ended) {
+          card?.classList.remove("is-playing");
+        }
+      });
+
+      video.addEventListener("ended", () => {
+        card?.classList.remove("is-playing");
+      });
+    });
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
